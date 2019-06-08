@@ -10,6 +10,7 @@ import json
 import pandas as pd
 import seaborn as sns
 from tqdm import tqdm
+from directory_vars import directory_variables
 
 
 def fetch_clusters_2d(model, keys, top_n):
@@ -172,16 +173,18 @@ if __name__ == "__main__":
 
     model = KeyedVectors.load_word2vec_format(path, binary=False)
 
-    plot_pca(model, 15)
+    # plot_pca(model, 15)
 
-    keys = ['time_bn:00077270n', 'united_states_bn:00003341n',
-            'village_bn:00042729n', 'also_bn:00114246r',
-            'say_bn:00093287v', 'film_bn:00034471n']
-    embeddings_en_2d, word_clusters = fetch_clusters_2d(
-        model, keys, top_n=15)
-    tsne_plot_similar_words('Similar Sense Embeddings', keys,
-                            embeddings_en_2d, word_clusters, 0.7,
-                            'similar_words.png')
+    # keys = ['time_bn:00077270n', 'united_states_bn:00003341n',
+    #         'village_bn:00042729n', 'also_bn:00114246r',
+    #         'say_bn:00093287v', 'film_bn:00034471n']
+    # embeddings_en_2d, word_clusters = fetch_clusters_2d(
+    #     model, keys, top_n=15)
+    # tsne_plot_similar_words('Similar Sense Embeddings', keys,
+    #                         embeddings_en_2d, word_clusters, 0.7,
+    #                         'similar_words.png')
+
+    json_path = r'C:/Users/Sheikh/Documents/GitLab/word_sense_embeddings/resources/grid_search.json'
     save_path = r'hs_sg_results_gridsearch.png'
-    visualize_gridsearch(path, save_path)
+    visualize_gridsearch(json_path, save_path)
 
